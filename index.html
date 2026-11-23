@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="英語と日本語の意味を隠して、3214語を自分のペースで学べる英単語学習アプリです。">
 <title>英単語マスター Quiz App (No.1-3214)</title>
 <script>document.documentElement.className += ' js';</script>
 <style>
@@ -1111,6 +1112,165 @@ html:not(.js) .cell-en .sticky-note{right:115px;}
   .section-card { content-visibility: auto; contain-intrinsic-size: auto 4800px; }
   .ix-group { content-visibility: auto; contain-intrinsic-size: auto 1800px; }
 }
+
+        /* Refined study interface */
+        :root {
+            --bg-body: #f3f6fb; --bg-card: #fff; --bg-subhdr: #f7f9fd;
+            --text-main: #14213a; --text-sub: #52627a; --text-muted: #8090a7;
+            --border-color: #e3e9f2; --amber-primary: #42c7b5; --amber-hover: #20ad9b;
+            --amber-light: #e5f8f5; --amber-dark: #12695e;
+            --sticky-top: #e9f8ff; --sticky-bottom: #d8f1ff; --sticky-border: #a7dff3;
+            --blue-btn: #3975e8; --blue-btn-hover: #285fc9; color-scheme: light;
+        }
+        html { scroll-padding-top: 118px; }
+        body {
+            background: radial-gradient(ellipse at 50% -12rem, rgba(91,154,241,.12), transparent 38rem), var(--bg-body);
+            color: var(--text-main); line-height: 1.55;
+        }
+        button, label, select { -webkit-user-select: none; user-select: none; }
+        :focus-visible { outline: 3px solid #61cfc0 !important; outline-offset: 3px; }
+        .app-header {
+            background: linear-gradient(112deg, #10213d 0%, #17345a 100%);
+            border-bottom: 1px solid rgba(255,255,255,.12);
+            box-shadow: 0 8px 26px rgba(15,35,67,.18);
+            -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+        }
+        .header-inner { max-width: 1160px; gap: 14px; padding: 12px 20px; }
+        .brand-icon {
+            width: 42px; height: 42px; border-radius: 13px;
+            background: linear-gradient(145deg, #a6f0e2, #51c9b5); color: #103c49;
+            box-shadow: 0 5px 14px rgba(0,0,0,.18);
+        }
+        .brand-title { font-size: 17px; letter-spacing: .015em; }
+        .brand-subtitle { margin-top: 2px; color: #c0cde0; font-size: 11px; }
+        .section-select {
+            min-height: 42px; max-width: 190px; border-color: rgba(255,255,255,.2);
+            border-radius: 11px; background-color: rgba(8,24,47,.55);
+            color: #e4f7f4; font-size: 13px; padding: 9px 12px;
+        }
+        .controls-row { gap: 9px; }
+        .search-panel {
+            padding: 5px; gap: 7px; border-radius: 13px;
+            border-color: rgba(255,255,255,.15); background: rgba(8,24,47,.48);
+        }
+        .search-dir-btn {
+            min-height: 38px; border-radius: 9px;
+            background: rgba(255,255,255,.09); color: #d5e0ef;
+        }
+        .search-dir-btn:hover { background: rgba(255,255,255,.17); }
+        .search-dir-btn.is-active { background: #a6f0e2; color: #123d43; box-shadow: 0 2px 9px rgba(26,198,169,.2); }
+        .search-input {
+            min-height: 38px; border-color: rgba(255,255,255,.14);
+            border-radius: 9px; background: rgba(255,255,255,.1); color: #fff; font-size: 14px;
+        }
+        .search-input::placeholder { color: #bdcadd; }
+        .search-input:focus { border-color: #8de4d5; }
+        .btn { min-height: 40px; border-radius: 10px; padding: 9px 13px; font-size: 13px; }
+        .btn-dark { border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.08); }
+        .btn-dark:hover { background: rgba(255,255,255,.17); }
+        .btn-amber { background: #a6f0e2; color: #123d43; }
+        .btn-amber:hover { background: #c2f8ec; }
+        .main-container { max-width: 1160px; padding: 24px 20px 56px; }
+        .status-bar {
+            gap: 14px; padding: 16px 18px; margin-bottom: 20px;
+            border-color: #e0e8f2; border-radius: 16px;
+            box-shadow: 0 5px 18px rgba(25,48,83,.045);
+        }
+        .guide-text { gap: 10px; line-height: 1.65; }
+        .badge-guide { flex: 0 0 auto; padding: 5px 11px; background: #e5f8f5; color: #187a6c; font-size: 12px; }
+        .stats-right { flex: 0 0 auto; }
+        .btn-star-filter { min-height: 38px; padding: 7px 11px; border-color: #e7ebf1; }
+        .btn-star-filter.active { background: #fff7dc; border-color: #f2d886; color: #8a6500; }
+        .sections-list { gap: 20px; }
+        .section-card {
+            border-color: #e1e8f1; border-radius: 17px;
+            box-shadow: 0 7px 24px rgba(25,48,83,.055);
+        }
+        .section-head {
+            min-height: 62px; padding: 13px 17px;
+            background: linear-gradient(110deg, #f7f9fd, #f1f6fc); border-bottom-color: #e6ebf2;
+        }
+        .section-title-box { flex-wrap: wrap; gap: 9px; }
+        .section-badge { padding: 6px 11px; border-radius: 9px; background: #17345a; color: #b5f1e5; font-size: 12px; letter-spacing: .02em; }
+        .section-theme { color: #344761; font-weight: 700; }
+        .section-count { color: #77869b; }
+        .btn-sec { min-height: 38px; padding: 7px 11px; border-color: #e0e6ee; border-radius: 9px; color: #42536b; }
+        .btn-sec:hover { background: #e9f8f5; border-color: #abe5d8; color: #176d61; }
+        .btn-sec-show { background: #e8f7f4; color: #176d61; border-color: #c5ebe3; }
+        .word-table th { padding: 10px 12px; background: #fbfcfe; color: #78879a; font-size: 11px; letter-spacing: .025em; }
+        .cell-no { background: #fbfcfe; color: #8b98aa; }
+        .word-row { border-bottom-color: #edf1f6; }
+        .word-row:hover { background: #f4fbfa; }
+        .cell-quiz { height: 58px; padding: 7px 11px; }
+        .cell-en { border-right-color: #edf1f6; }
+        .word-en-text { color: #182b47; font-size: 15px; letter-spacing: .005em; }
+        .word-ja-text { color: #3f5068; font-size: 13px; }
+        .sticky-note { border-radius: 10px; border-bottom-right-radius: 15px 6px; font-size: 12px; letter-spacing: .015em; }
+        .sticky-note:hover { filter: saturate(1.08) brightness(.99); box-shadow: 0 4px 10px rgba(2,132,199,.17); }
+        .btn-star { min-width: 38px; min-height: 42px; }
+        .btn-mini { min-width: 36px; min-height: 36px; }
+        .sr-panel { border-color: #d7e7f1; border-radius: 16px; box-shadow: 0 7px 22px rgba(25,48,83,.07); }
+        .sr-head { padding: 12px 16px; background: #eaf8f5; color: #176d61; }
+        .sr-item { min-height: 62px; padding: 11px 14px; }
+        .sr-btn { min-height: 42px; border-color: #c5ebe3; background: #effaf8; color: #176d61; }
+        .toast { border-radius: 12px; box-shadow: 0 8px 26px rgba(15,35,67,.2); }
+        .section-card, .status-bar, .sr-panel { scroll-margin-top: 125px; }
+        @media (min-width: 768px) {
+            .header-inner { min-height: 78px; }
+            .section-card { scroll-margin-top: 100px; }
+        }
+        @media (max-width: 767px) {
+            html { scroll-padding-top: 205px; }
+            .header-inner { padding: 10px 13px 12px; gap: 10px; }
+            .brand-row { min-height: 42px; }
+            .brand-icon { width: 38px; height: 38px; border-radius: 11px; }
+            .section-select { max-width: 168px; min-height: 40px; }
+            .controls-row { gap: 7px; }
+            .search-panel { gap: 7px; padding: 7px; border-radius: 12px; }
+            .search-direction { gap: 5px; }
+            .search-dir-btn { min-height: 40px; font-size: 12px; }
+            .search-field .search-input {
+                min-height: 46px !important; border-radius: 10px;
+                background: rgba(255,255,255,.1) !important; border-color: rgba(255,255,255,.18) !important;
+                padding-left: 37px !important;
+            }
+            .btn-group { gap: 7px; }
+            .btn-group .btn { min-height: 42px; font-size: 12px; border-radius: 10px; }
+            .main-container { padding: 15px 12px 40px; }
+            .status-bar { padding: 13px 14px; margin-bottom: 15px; border-radius: 14px; }
+            .guide-text { align-items: flex-start; }
+            .stats-right { justify-content: space-between; width: 100%; }
+            .section-card { border-radius: 14px; scroll-margin-top: 205px; }
+            .section-head { gap: 8px; padding: 11px 12px; }
+            .section-title-box { width: 100%; }
+            .section-actions { gap: 6px; }
+            .btn-sec { min-height: 40px; font-size: 11px; }
+            .cell-quiz { min-height: 58px; padding: 6px 7px; }
+            .cell-inner { gap: 3px; }
+            .word-en-text { font-size: 14px; }
+            .word-ja-text { font-size: 13px; line-height: 1.45; }
+            .btn-mini[data-action="speak"] { font-size: 16px; padding: 5px; }
+            .btn-star { min-width: 34px; min-height: 42px; padding: 4px; }
+        }
+        @media (max-width: 380px) {
+            .header-inner { padding-left: 10px; padding-right: 10px; }
+            .brand-title { font-size: 14px; }
+            .brand-subtitle { font-size: 9px; }
+            .section-select { max-width: 145px; font-size: 11px; }
+            .main-container { padding-left: 8px; padding-right: 8px; }
+            .word-table th.col-no-th, .cell-no { width: 29px; }
+            .word-table th.col-star-th { width: 32px; }
+            .word-table th.col-en-th, .word-table th.col-ja-th { width: calc((100% - 61px) / 2); }
+            .cell-quiz { padding-left: 5px; padding-right: 5px; }
+            .word-en-text { font-size: 13px; }
+            .word-ja-text { font-size: 12px; }
+            .btn-group .btn { padding-left: 3px; padding-right: 3px; }
+        }
+        @media (hover: none) {
+            .word-row:hover { background: inherit; }
+            .btn-sec:hover, .btn-mini:hover { background: initial; }
+        }
+
 </style>
 <link rel="manifest" href="./manifest.webmanifest">
 <meta name="theme-color" content="#0f172a">

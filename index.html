@@ -1339,6 +1339,7 @@ html:not(.js) .cell-en .sticky-note{right:115px;}
 </style>
 <style>.quiz-return{display:block;margin:0 0 14px;padding:8px 12px;border:1px solid #dbe4ee;border-radius:10px;background:#f8fafc;color:#41536d;font-weight:750}.quiz-favorite{display:block;width:100%;min-height:44px;margin:0 0 10px;border:1px solid #f0d989;border-radius:11px;background:#fff9e6;color:#806000;font-weight:800}.quiz-favorite:disabled{opacity:.75}</style>
 <style>@keyframes sticky-peel-smooth{0%{opacity:1;transform:translate3d(0,0,0) scale(1)}48%{opacity:1;transform:translate3d(7px,-11px,0) rotate(-3deg) scale(1.015)}72%{opacity:.72;transform:translate3d(24px,-29px,0) rotate(-6deg) scale(.99)}100%{opacity:0;transform:translate3d(46px,-52px,0) rotate(-8deg) scale(.96)}}</style>
+<style>.cell-quiz:has(.rv:checked) .word-en-text,.cell-quiz:has(.rv:checked) .word-ja-text{cursor:pointer}</style>
 <button type="button" id="quiz-open" class="quiz-launch" style="position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:90;border:0;border-radius:999px;padding:14px 20px;font-weight:850;box-shadow:0 8px 24px #123d4340">🎲 クイズ</button>
 <main class="main-container">
 <div class="nojs-only ix-top"><b>⚠ このビューでは入力式の検索が使えません</b>
@@ -5141,6 +5142,11 @@ html:not(.js) .cell-en .sticky-note{right:115px;}
 
   form.addEventListener('click', function (e) {
     var el = e.target;
+    var answerText = el.closest && el.closest('.word-en-text, .word-ja-text');
+    if (answerText) {
+      var answerCell = answerText.closest('.cell-quiz');
+      if (answerCell && $('.rv', answerCell).checked) { coverAgain(answerCell); return; }
+    }
     var note = el.closest && el.closest('.sticky-note');
     if (note) {
       e.preventDefault();

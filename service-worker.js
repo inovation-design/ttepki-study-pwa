@@ -1,4 +1,4 @@
-const CACHE_VERSION = "ttepki-github-pwa-v1";
+const CACHE_VERSION = "ttepki-github-pwa-v2";
 const SHELL_CACHE = `${CACHE_VERSION}-shell`;
 const PAGE_CACHE = `${CACHE_VERSION}-page`;
 const AUDIO_CACHE = `${CACHE_VERSION}-audio`;
@@ -30,7 +30,7 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET" || url.origin !== self.location.origin) return;
 
   if (url.pathname === APP_BASE.pathname || url.pathname === appPath("index.html")) {
-    const network = fetch(request);
+    const network = fetch(request, { cache: "reload" });
     const cacheWrite = network.then((response) => {
       if (!response.ok) return;
       return caches.open(PAGE_CACHE).then((cache) => cache.put(PAGE_URL, response.clone()));
